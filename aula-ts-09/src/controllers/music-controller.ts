@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import musicService from "../services/music-service";
+import { Music } from "protocols";
 
 function getMusics(req: Request, res: Response) {
   const musics = musicService.getMusics();
@@ -7,7 +8,7 @@ function getMusics(req: Request, res: Response) {
 }
 
 function createMusic(req: Request, res: Response) {
-  const music = req.body; // TODO Asserção do tipo
+  const music = req.body as Music; // TODO Asserção do tipo
   musicService.createMusic(music);
   res.sendStatus(201);
 }
